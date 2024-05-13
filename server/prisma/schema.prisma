@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Asha {
+  id            String          @id @default(cuid())
+  name          String
+  password      String
+  House         House[]
+  House_meamber House_meamber[]
+  Kid           Kid[]
+}
+
+model House {
+  id              String          @id @default(cuid())
+  Asha            Asha            @relation(fields: [ashaId], references: [id])
+  name            String
+  addrace         String
+  totle_meambers  String
+  male_meamber    Int
+  female_meamber  Int
+  ashaId          String
+  house_meamberId String[]
+  Kid             Kid[]
+  House_meamber   House_meamber[]
+}
+
+model House_meamber {
+  id         String  @id @default(cuid())
+  Asha       Asha    @relation(fields: [ashaId], references: [id])
+  House      House   @relation(fields: [houseId], references: [id])
+  Child      Kid[]
+  dead       Boolean
+  head       Boolean
+  married    Boolean
+  wife_of    String?
+  husbend_of String?
+  firstName String
+  midelName String
+  lastName  String
+  age       Int
+  gender    String
+  ashaId    String
+  houseId   String
+  dob       String
+}
+
+model Kid {
+  id        String          @id @default(cuid())
+  Asha      Asha            @relation(fields: [ashaId], references: [id])
+  House     House           @relation(fields: [houseId], references: [id])
+  Child_of  House_meamber[]
+  firstName String
+  midelName String
+  lastName  String
+  age       Int
+  gender    String
+  ashaId    String
+  houseId   String
+  dob       String
+}
