@@ -8,59 +8,70 @@ datasource db {
 }
 
 model Asha {
-  id            String          @id @default(cuid())
-  name          String
-  password      String
-  House         House[]
-  House_meamber House_meamber[]
-  Kid           Kid[]
+  id       String    @id @default(cuid())
+  name     String
+  password String
+  house    House[]
+  members  Members[]
+  childred Child[]
 }
 
 model House {
-  id              String          @id @default(cuid())
-  Asha            Asha            @relation(fields: [ashaId], references: [id])
-  name            String
-  addrace         String
-  totle_meambers  String
-  male_meamber    Int
-  female_meamber  Int
-  ashaId          String
-  house_meamberId String[]
-  Kid             Kid[]
-  House_meamber   House_meamber[]
+  id           String    @id @default(cuid())
+  name         String    @unique
+  address      String
+  totalMember  Int?
+  femaleMember Int?
+  maleMember   Int?
+  // relation
+  ashaId       String
+  asha         Asha      @relation(fields: [ashaId], references: [id])
+  members      Members[]
 }
 
-model House_meamber {
-  id         String  @id @default(cuid())
-  Asha       Asha    @relation(fields: [ashaId], references: [id])
-  House      House   @relation(fields: [houseId], references: [id])
-  Child      Kid[]
-  dead       Boolean
-  head       Boolean
-  married    Boolean
-  wife_of    String?
-  husbend_of String?
-  firstName String
-  midelName String
-  lastName  String
-  age       Int
-  gender    String
-  ashaId    String
-  houseId   String
-  dob       String
+model Members {
+  id         String        @id @default(cuid())
+  name       String
+  age        Int
+  dob        DateTime
+  gender     Gender
+  // other info
+  isHead     Boolean?
+  isHeadWife Boolean?
+  isMarried  Boolean?
+  isHusband  Boolean?
+  isWife     Boolean?
+  // relations
+  ashaId     String
+  asha       Asha          @relation(fields: [ashaId], references: [id])
+  houseId    String
+  house      House         @relation(fields: [houseId], references: [id])
+  child      ParentChild[]
 }
 
-model Kid {
-  id        String          @id @default(cuid())
-  Asha      Asha            @relation(fields: [ashaId], references: [id])
-  House     House           @relation(fields: [houseId], references: [id])
-  Child_of  House_meamber[]
-  firstName String
-  midelName String
-  lastName  String
-  age       Int
-  gender    String
-  ashaId    String
-  houseId   String
-  dob       String
+model Child {
+  id     String        @id @default(cuid())
+  name   String
+  age    Int
+  dob    DateTime
+  gender Gender
+  // relations
+  parent ParentChild[]
+  ashaId String
+  asha   Asha          @relation(fields: [ashaId], references: [id])
+}
+
+model ParentChild {
+  childId  String
+  parentId String
+  child    Child   @relation(fields: [childId], references: [id])
+  parent   Members @relation(fields: [parentId], references: [id])
+
+  @@id([childId, parentId])
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
 }

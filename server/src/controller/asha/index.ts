@@ -40,9 +40,9 @@ export async function Register(req: Request, res: Response) {
     if (!newAsha.id) {
       return ApiResponse({ res, code: 401, message: "Unable to Register" });
     }
-    return ApiResponse({ res, code: 200, message: { token } });
+    return ApiResponse({ res, code: 200, message: { token, id: newAsha.id } });
   } catch (error) {
-    console.log(error);
+    console.trace(error);
     return ApiResponse({
       res,
       code: 200,
@@ -78,9 +78,9 @@ export async function Log_In(req: Request, res: Response) {
         message: "unable to generate token",
       });
     }
-    return ApiResponse({ res, code: 200, message: { token } });
+    return ApiResponse({ res, code: 200, message: { token, id: asha.id } });
   } catch (error) {
-    console.log(error);
+    console.trace(error);
     return ApiResponse({
       res,
       code: 200,
@@ -99,7 +99,7 @@ export async function Me(req: Request, res: Response) {
     }
     return ApiResponse({ res, code: 200, message: { asha } });
   } catch (error) {
-    console.log(error);
+    console.trace(error);
     return ApiResponse({
       res,
       code: 200,
