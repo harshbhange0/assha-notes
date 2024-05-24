@@ -25,7 +25,7 @@ app.use("/api/v1", Router);
 
 app.listen(PORT, () => {
   if (!process.env.PORT) {
-    console.log("Unable to load .env");
+    console.log("Unable to load .env PORT");
     exit(".env not found");
   }
   console.log(".env loaded");
