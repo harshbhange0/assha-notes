@@ -1,7 +1,6 @@
 import AddChildren from "@/components/add/AddChildren";
 import AddHouse from "@/components/add/AddHouse";
 import AddMember from "@/components/add/AddMember";
-import React from "react";
 import { useParams } from "react-router-dom";
 
 export default function Add() {

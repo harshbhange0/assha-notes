@@ -105,6 +105,6 @@ export default function AddMember({ param }: { param?: string }) {
     </div>
   );
 }
-const UpdateMember = () => {
-  return <></>;
-};
+// const UpdateMember = () => {
+//   return <></>;
+// };
