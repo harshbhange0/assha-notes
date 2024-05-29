@@ -11,8 +11,8 @@ export default function Add() {
   if (param == "house") {
     return <AddHouse />;
   }
-  if (param == "male" || param == "female") {
-    return <AddMember param={param} />;
+  if (param == "male" || param == "female"||param=="member") {
+    return <AddMember  />;
   }
   if (param == "child") {
     return <AddChildren />;
@@ -20,7 +20,7 @@ export default function Add() {
   if (param == "dead") {
     return <AddMember param={param} />;
   }
-  if (param == "Pregnant") {
+  if (param == "pregnant") {
     return <AddMember param={param} />;
   }
 }
