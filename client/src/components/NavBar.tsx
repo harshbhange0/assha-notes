@@ -1,4 +1,3 @@
-import React from "react";
 import { Input } from "./ui/input";
 import { Search } from "lucide-react";
 import UserDropDown from "./UserDropDown";
@@ -7,7 +6,6 @@ import { GrMenu } from "react-icons/gr";
 import {
   SheetContent,
   Sheet,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,

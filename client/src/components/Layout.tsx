@@ -1,9 +1,6 @@
 import React from "react";
 import NavBar from "./NavBar";
 import DashNav from "./DashNav";
-import { dashboardItem } from "@/data";
-import DashCard from "./DashCard";
-import { TooltipProvider } from "./ui/tooltip";
 import BreadCrumbNav from "./BreadCrumbNav";
 
 export default function Layout({

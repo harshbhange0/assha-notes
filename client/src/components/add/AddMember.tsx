@@ -1,4 +1,3 @@
-import React from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -21,13 +20,18 @@ interface Inputs {
 }
 
 export default function AddMember({ param }: { param?: string }) {
+  console.log(param);
+
   const { register, handleSubmit, reset } = useForm<Inputs>();
   const onSubmit = async (data: Inputs) => {
     console.log(data);
   };
   return (
     <div className="relative hidden flex-col items-start gap-8 md:flex">
-      <form className="mx-auto grid w-full max-w-lg items-start gap-6 ">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="mx-auto grid w-full max-w-lg items-start gap-6 "
+      >
         <fieldset className="grid gap-6 rounded-lg border bg-white p-4">
           <legend className="-ml-1 px-1 text-sm font-medium">
             House Member Information
@@ -101,7 +105,6 @@ export default function AddMember({ param }: { param?: string }) {
     </div>
   );
 }
-
 const UpdateMember = () => {
   return <></>;
 };

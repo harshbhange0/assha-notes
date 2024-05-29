@@ -1,12 +1,11 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "./ui/breadcrumb";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function BreadCrumbNav() {
   const rootUrl = window.location.href
