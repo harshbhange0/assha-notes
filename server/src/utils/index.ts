@@ -12,7 +12,7 @@ export function generateHashPassword(rowPassword: string) {
     throw new Error("JWT_SECRETE not found");
   }
 
-  const value = bcrypt.hashSync(rowPassword, se);
+  const value = bcrypt.hashSync(rowPassword, 12);
   return value;
 }
 export async function comparePassword(

@@ -7,6 +7,8 @@ import {
   generateToken,
 } from "../../utils";
 import db from "../../db";
+
+
 export async function Register(req: Request, res: Response) {
   const parsInput = AshaZodSchema.safeParse(req.body);
   if (!parsInput.success) {

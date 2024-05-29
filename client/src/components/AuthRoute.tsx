@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const AuthRoutes = ({
   children,
-  auth,
+  auth = true,
 }: {
   auth: boolean;
   children: React.ReactNode;
