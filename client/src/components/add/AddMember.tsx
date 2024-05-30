@@ -27,13 +27,13 @@ export default function AddMember({ param }: { param?: string }) {
     console.log(data);
   };
   return (
-    <div className="relative hidden flex-col items-start gap-8 md:flex">
+    <div className="relative mx-auto hidden max-w-lg flex-col  items-start gap-8 md:flex">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="mx-auto grid w-full max-w-lg items-start gap-6 "
+        className=" grid w-full items-start gap-6 "
       >
         <fieldset className="grid gap-6 rounded-lg border bg-white p-4">
-          <legend className="-ml-1 px-1 text-sm font-medium">
+          <legend className="-ml-1 px-1 text-lg font-medium">
             House Member Information
           </legend>
           <div className="mb-2 h-full">
@@ -105,6 +105,3 @@ export default function AddMember({ param }: { param?: string }) {
     </div>
   );
 }
-// const UpdateMember = () => {
-//   return <></>;
-// };

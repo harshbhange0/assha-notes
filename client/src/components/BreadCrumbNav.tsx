@@ -12,7 +12,7 @@ export default function BreadCrumbNav() {
     .toString()
     .split("/")
     .filter((v) => v !== "")
-    .filter((v) => v !== "http:");
+    .filter((v) => v !== "http:" && v !== "https:");
 
   return (
     <Breadcrumb className="px-10 py-2">
@@ -20,7 +20,11 @@ export default function BreadCrumbNav() {
         {rootUrl.map((url, i) => (
           <Fragment key={i}>
             <BreadcrumbItem className="capitalize">
-              <Link to={"/"}>{url == "localhost:5173" ? "Home" : url}</Link>
+              <Link to={"/"}>
+                {url == "localhost:5173" || url == "assha-notes.vercel.app"
+                  ? "Home"
+                  : url}
+              </Link>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
           </Fragment>
